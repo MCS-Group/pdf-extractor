@@ -23,7 +23,7 @@ Extraction Rules:
     "output_type": Order,
     "api-service": {
         "customers": "http://localhost:8001/customers",
-        "order": "http://localhost:8001/orders",
+        "order": "http://localhost:8001/order",
         "verify": "http://localhost:8001/verify"
     },
     "api-key": "testkey123"
