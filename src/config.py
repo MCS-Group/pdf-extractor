@@ -22,9 +22,9 @@ Extraction Rules:
 """,
     "output_type": Order,
     "api-service": {
-        "customers": "https://pdf-third-party-dummy-e8ath47ly-itgls-projects.vercel.app/customers",
-        "order": "https://pdf-third-party-dummy-e8ath47ly-itgls-projects.vercel.app/order",
-        "verify": "https://pdf-third-party-dummy-e8ath47ly-itgls-projects.vercel.app/verify"
+        "customers": "https://pdf-third-party-dummy-r4udpyjwv-itgls-projects.vercel.app/customers",
+        "order": "https://pdf-third-party-dummy-r4udpyjwv-itgls-projects.vercel.app/order",
+        "verify": "https://pdf-third-party-dummy-r4udpyjwv-itgls-projects.vercel.app/verify"
     },
     "api-key": "testkey123"
     },
