@@ -1,0 +1,54 @@
+datasource db {
+  provider = "postgresql"
+  // url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-py"
+}
+
+model User {
+  id                    Int      @id @default(autoincrement())
+  name                  String   @unique
+  password              String
+  email                 String   @unique
+  ms_code               String   @unique
+  company_id            Int
+  created_at            DateTime @default(now())
+
+  company               Company @relation(fields: [company_id], references: [id])
+}
+
+
+model Company {
+  id                    Int      @id @default(autoincrement())
+  name                  String   @unique
+  CUS_ID                String   @unique
+  created_at            DateTime @default(now())
+  
+  users                 User[]
+  orders                Order[]
+}
+
+model Item {
+    id                  Int      @id @default(autoincrement())
+    order_id            Int
+    barcode_code        String
+    product_name        String
+    quantity            Int
+    price               Float
+    
+    order               Order    @relation(fields: [order_id], references: [id])
+}
+
+model Order {
+  id                    Int      @id @default(autoincrement())
+  order_number          String   @unique
+  company_id            Int
+  user_id               Int
+  items                 Item[]
+  total_amount          Float
+  created_at            DateTime @default(now())
+
+  company               Company  @relation(fields: [company_id], references: [id])
+}
