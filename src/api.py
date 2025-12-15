@@ -144,6 +144,8 @@ async def extract_order(order_request: Annotated[PdfFile, Form()], token: str = 
         if not orders_endpoint:
             raise HTTPException(status_code=400, detail="Order endpoint not configured for this company.")
         
+        print("Sending orders to third party service:", orders_endpoint)
+
         #send orders to third party service
         response = await RequestService.post_request(orders_endpoint, data={
             "ms_code": str(ms_code),
