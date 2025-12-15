@@ -52,10 +52,6 @@ app.add_middleware(
 
 UPLOAD_DIR = Path("uploads")
 UPLOAD_DIR.mkdir(exist_ok=True)
-@app.get("/favicon.ico", include_in_schema=False)
-async def favicon():
-    # /vercel.svg is automatically served when included in the public/** directory.
-    return RedirectResponse("/vercel.svg", status_code=307)
 
 @app.get("/")
 async def root():
