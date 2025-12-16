@@ -316,10 +316,10 @@ async def get_orders(
     
     orders_data = []
     for order in orders:
+        total = 0
         order_dict = {
             "id": order.id,
             "order_id": order.order_id,
-            "total_amount": order.total_amount,
             "status": order.status,
             "created_at": order.created_at.isoformat(),
             "items": [
@@ -332,6 +332,11 @@ async def get_orders(
                 for item in (order.items or [])
             ]
         }
+
+        for item in order.items or []:
+            total += item.quantity * item.price
+        order_dict["total_amount"] = total
+
         orders_data.append(order_dict)
     
     return SuccessResponse(
