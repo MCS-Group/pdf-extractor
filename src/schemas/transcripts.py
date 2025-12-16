@@ -69,6 +69,9 @@ class PdfFile(BaseModel):
     file: UploadFile = File(...)
 
 
+class OrderIdRequest(BaseModel):
+    order_id: str
+
 #response models
 #success response model
 class SuccessResponse(BaseModel):

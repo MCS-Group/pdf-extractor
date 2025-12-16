@@ -33,7 +33,7 @@ model Company {
 model Item {
     id                  Int      @id @default(autoincrement())
     order_id            Int
-    barcode_code        String
+    barcode             String
     product_name        String
     quantity            Int
     price               Float
@@ -41,12 +41,20 @@ model Item {
     order               Order    @relation(fields: [order_id], references: [id])
 }
 
+enum OrderStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  CANCELLED
+}
+
 model Order {
   id                    Int      @id @default(autoincrement())
-  order_number          String   @unique
+  order_id              String   @unique
   company_id            Int
-  user_id               Int
+  user_id               String
   items                 Item[]
+  status                OrderStatus @default(PENDING)
   total_amount          Float
   created_at            DateTime @default(now())
 
