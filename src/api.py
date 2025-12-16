@@ -311,7 +311,8 @@ async def get_orders(
     
     orders = await client.order.find_many(
         where={"company_id": int(company_id) if company_id else 0},
-        include={"items": True}
+        include={"items": True},
+        order={"created_at": "desc"}
     )
     
     orders_data = []
